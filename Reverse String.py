@@ -8,11 +8,3 @@ class Solution:
             s[i]=s[right]
             s[right]=temp
             right-=1
-
-
-s = ["h","e","l","o","w"]
-
-Solution().reverseString(s=s)
-print(s)
-
-        
