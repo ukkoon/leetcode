@@ -13,8 +13,7 @@ class Solution:
             return leftOk and rightOk
                     
         else:
-            return False
-                        
+            return False                        
             
         
             
