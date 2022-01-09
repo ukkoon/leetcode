@@ -8,8 +8,9 @@ class Solution:
             return True
             
         if leftLimit < root.val < rightLimit:
-            leftOk = self.isValid(root.left,leftLimit=leftLimit,rightLimit=root.val)
-            rightOk = self.isValid(root.right,leftLimit=root.val,rightLimit=rightLimit)
+            leftOk = self.isValid(root.left,leftLimit,root.val)
+            rightOk = self.isValid(root.right,root.val,rightLimit)
+            
             return leftOk and rightOk
                     
         else:
