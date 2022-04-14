@@ -1,4 +1,3 @@
-from re import A
 from typing import List
 
 
@@ -14,8 +13,3 @@ class Solution:
     def reverse_sublist(self,lst,start,end):
         lst[start:end] = lst[start:end][::-1]
         return lst
-
-nums=[10,20,30,40,50,60,70]
-Solution().rotate(nums,k=1)
-
-print(nums)
