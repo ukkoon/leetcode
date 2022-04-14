@@ -1,7 +1,6 @@
 # Definition for singly-linked list.
 from typing import Optional
 
-
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -17,11 +16,15 @@ class Solution:
         
         while cursor.next and n > 0:
             cursor=cursor.next
-            n-=1
+            n-=1                    
 
         while cursor.next:
-            cursor=cursor.next
-            delayedCursor=delayedCursor.next
+            cursor=cursor.next        
+            delayedCursor=delayedCursor.next    
             
         delayedCursor.next=delayedCursor.next.next            
         return dummy.next
+
+nodes = ListNode(val=1,next=ListNode(val=2,next=ListNode(val=3,next=ListNode(val=4,next=ListNode(val=5)))))
+solution = Solution()
+result = solution.removeNthFromEnd(head=nodes,n=2)
