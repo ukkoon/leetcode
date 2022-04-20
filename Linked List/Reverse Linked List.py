@@ -2,13 +2,8 @@
 from math import factorial
 from subprocess import call
 from typing import Optional
+from ListNode import ListNode
 
-
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-        
 # Iteratively Ugly Solution #
 # First idiot trying #
         
@@ -51,23 +46,23 @@ class ListNode:
 # Recursively Solution #
 # First trying#
 
-class Solution:
-    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        result = self.rec(head,None)                 
-        return result[1]
+# class Solution:
+#     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+#         result = self.rec(head,None)                 
+#         return result[1]
 
-    def rec(self,head: Optional[ListNode]) -> Optional[ListNode]:
-        if head is None or head.next is None:
-            cursor = head
-            return head, cursor
+#     def rec(self,head: Optional[ListNode]) -> Optional[ListNode]:
+#         if head is None or head.next is None:
+#             cursor = head
+#             return head, cursor
 
-        else :                            
-            caller = head
-            callee = self.rec(head.next,None)    
-            callee.next=caller
+#         else :                            
+#             caller = head
+#             callee = self.rec(head.next,None)    
+#             callee.next=caller
 
-            caller.next=None
-            return caller, cursor
+#             caller.next=None
+#             return caller, cursor
 
 # Recursively solution #
 # reference code #
@@ -77,13 +72,14 @@ class Solution:
         if not head or not head.next:
             return head
         newHead = self.reverseList(head.next)
+        # print(f"{head.next.val}이 {head.val}를 가르키도록")
         head.next.next = head
+        # print(f"{head.val}이 None을 가르키도록")
         head.next=None
         return newHead
 
-# class Rec:
-#     def factorial(self, n)->int:
-#         if n == 1:
-#             return n
-#         else :
-#             return n * self.factorial(n-1)
+# solution = Solution().reverseList(head=ListNode(1,ListNode(2,ListNode(3))))
+
+# while solution:
+#     print(solution.val)
+#     solution=solution.next
