@@ -8,5 +8,3 @@ class Solution:
             if letters[i] != letters[n-i-1]:
                 return False
         return True
-
-print(Solution().isPalindrome(s="0P"))

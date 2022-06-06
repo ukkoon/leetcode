@@ -1,30 +1,30 @@
-# Definition for singly-linked list.
 from typing import Optional
-
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+from ListNode import ListNode
 
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        dummy = ListNode(-1)
-        dummy.next = head
-                
-        cursor = dummy
-        delayedCursor = dummy
+        dummy = ListNode(-1,head)
+        fast = dummy
+        slow = dummy
         
-        while cursor.next and n > 0:
-            cursor=cursor.next
-            n-=1                    
+        for i in range(n+1):
+            fast = fast.next  
 
-        while cursor.next:
-            cursor=cursor.next        
-            delayedCursor=delayedCursor.next    
-            
-        delayedCursor.next=delayedCursor.next.next            
+        while fast is not None:            
+            slow = slow.next                        
+            fast = fast.next
+                
+        slow.next=slow.next.next                   
+        
         return dummy.next
 
-nodes = ListNode(val=1,next=ListNode(val=2,next=ListNode(val=3,next=ListNode(val=4,next=ListNode(val=5)))))
-solution = Solution()
-result = solution.removeNthFromEnd(head=nodes,n=2)
+head = None
+for i in range(10,0,-1):
+    head = ListNode(i,head)
+
+head = Solution().removeNthFromEnd(head,10)
+
+while head is not None:
+    print(head.val)
+    head = head.next
+        
