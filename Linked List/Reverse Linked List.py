@@ -1,5 +1,3 @@
-from math import factorial
-from subprocess import call
 from typing import Optional
 from ListNode import ListNode
 
