@@ -10,11 +10,13 @@ class Solution:
 
         for i in range(len(nums)):             
             local_maximum = max(nums[i], nums[i]+local_maximum)            
-            global_maximum = max(local_maximum,global_maximum)
-            
+            global_maximum = max(local_maximum,global_maximum)      
+            print(f'local_maximum : {local_maximum}')
+            print(f'global_maximum : {global_maximum}')
 
         return global_maximum
 
+Solution().maxSubArray([-2,1,-3,4,-1,2,1,-5,4])
 # 헷갈림 방지 주석
 # global_maximum = 60인 상황에서
 # [10 ,20 ,30 ,-60, 80], i = 3인 경우 
