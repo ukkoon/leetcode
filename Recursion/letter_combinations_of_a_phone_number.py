@@ -14,6 +14,9 @@ mappings = {
 class Solution:
     result = []
     def letterCombinations(self, digits: str) -> List[str]:
+        """
+        iterative strategy 더욱 효과적일 것 같지만 문제의 요구사항대로 recursive strategy를 적용
+        """
         self.result=[]        
         if digits:
             self.comb(digits,"")        

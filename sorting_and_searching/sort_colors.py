@@ -4,8 +4,11 @@ import time
 # Dutch national flag problem (in-place)
 class Solution:    
     def sortColors(self, nums: List[int]) -> None:
-        low_index = 0
-        
+        low_index = 0        
+        """
+        가독성이 뛰어나도록 for문을 2번 사용하는 솔루션을 사용했다. O(n)        
+        """
+
         # [0,0,0..., others]
         for i in range(len(nums)):
             if nums[i]==0:
@@ -52,7 +55,7 @@ class Solution2:
 # Solution().sortColors(nums)
 # print(nums)     
 
-nums = list(map(lambda x:x,range(0,5000000)))
+nums = list(map(lambda x:x,range(0,50000000)))
 start = time.time()
 Solution2().sortColors(nums)
 end = time.time()
@@ -60,7 +63,7 @@ end = time.time()
 print(end-start)
 
 
-nums = list(map(lambda x:x,range(0,5000000)))
+nums = list(map(lambda x:x,range(0,50000000)))
 start = time.time()
 Solution().sortColors(nums)
 end = time.time()
