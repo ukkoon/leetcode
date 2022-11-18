@@ -1,21 +1,57 @@
+from typing import List
+import itertools
+
+
+mapping = {1:"(", 0:")"}
 class Solution:
-    # Sliding Window Algorithm
-    def lengthOfLongestSubstring(self, s:str) -> int:                
-        longest = cur = s[0] if s else ""        
-
-        for i in range(len(s)-1):
-            if s[i+1] not in cur:
-                cur+=s[i+1]
+    def generateParenthesis(self, n: int) -> List[str]:
+        """
+        slow solution
+        """
+        bins = list(map(list, itertools.product([0, 1], repeat=n*2)))
+        bins = list(filter(lambda x:True if x.count(1)==n else False,bins))
+        
+        result = []
+        for bin in bins:
+            if self.isParenthesis(bin):
+                result.append(''.join(list(map(lambda x:mapping[x],bin))))
+        return result
+        
+    def isParenthesis(self, bin:List[int]):
+        stack = [*bin]
+        left = []
+        right = []
+        
+        while stack:
+            if stack.pop(0) == 1:
+                left.append(1)
             else:
-                # ex)
-                # cur이 "abcdefgh"인 경우, s[i+1]이 a면
-                # cur의 값은 "bcdefgha"로 갱신
-                cur = cur[cur.index(s[i+1])+1:]+s[i+1]                
-            if len(cur)>len(longest):
-                longest=cur
+                right.append(0)
+            if len(right)>len(left):
+                return False
+                          
+        return True
+        
 
-        return len(longest)
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        """
+        backtracking solution
+        """
+        ans = []
+        def backtrack(S = [], left = 0, right = 0):
+            if len(S) == 2 * n:
+                ans.append("".join(S))
+                return
+            if left < n:
+                S.append("(")
+                backtrack(S, left+1, right)
+                S.pop()
+            if right < left:
+                S.append(")")
+                backtrack(S, left, right+1)
+                S.pop()
+        backtrack()
+        return ans
 
-s = "pwbbbbasdwasdfnjkdsafbui23njknwwwwkew"
-result = Solution().lengthOfLongestSubstring(s)
-print(result)
+Solution().generateParenthesis(8)
