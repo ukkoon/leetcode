@@ -35,21 +35,25 @@ class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         result = []
         stack = []
-        def backtracking(left,right):
-            if len(stack)==n*2:
-                result.append(''.join(stack))
-                return
+        def backtracking(left,right):            
+            print(stack)
+            print(f'len(stack):{len(stack)}')
             if left<n:
+                print(f'left<n:{left}<{n}')
                 stack.append("(")
                 backtracking(left+1,right)
                 stack.pop()
             if left>right:
+                print(f'left>right:{left}>{right}')
                 stack.append(")")
                 backtracking(left,right+1)
                 stack.pop()
+            if len(stack)==n*2:
+                result.append(''.join(stack))
+                return
         
         backtracking(0,0)                        
         return result
         
 
-Solution().generateParenthesis(3)
+print(Solution().generateParenthesis(4))
